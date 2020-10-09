@@ -1,0 +1,5 @@
+{
+    "name": "kart",
+    "productName": "Kaspersky Anti-Ransomware Tool",
+    "main": "./main.js"
+}
