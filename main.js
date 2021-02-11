@@ -29,11 +29,11 @@ if ( !gotTheLock ) {
                 if ( mainWindow.isMinimized() ) { // was minimized with .minimize()
                     bl.get( 'CommonLogic' ).traceInfo( 'Second instance of app restore minimized main window' )
                     mainWindow.restore()
-                    bl.get( 'StatisticsLogic' ).sendStatistics( { key: 'main_window_opened_from_minimized_state', action: 'NavigationEvent' } )
+                    bl.get( 'StatisticsLogic' ).sendStatistics( { source: 'mainWindow_fromMinimizedState', action: 'open' } )
                 } else if ( !mainWindow.isVisible() ) { // was hidden with .hide()
                     bl.get( 'CommonLogic' ).traceInfo( 'Second instance of app show main window' )
                     mainWindow.show()
-                    bl.get( 'StatisticsLogic' ).sendStatistics( { key: 'main_window_focused', action: 'NavigationEvent' } )
+                    bl.get( 'StatisticsLogic' ).sendStatistics( { source: 'mainWindow', action: 'focus' } )
                 }
                 bl.get( 'CommonLogic' ).traceInfo( 'Second instance of app focus main window' )
                 mainWindow.focus()
@@ -44,7 +44,7 @@ if ( !gotTheLock ) {
                     bl.get( 'CommonLogic' ).traceInfo( '--minimized-in-tray is not passed in second instance of app' )
                     bl.get( 'CommonLogic' ).traceInfo( 'Second instance of app create and show main window' )
                     bl.get( 'MainWindowStartLogic' ).createAndShowMainWindow()
-                    bl.get( 'StatisticsLogic' ).sendStatistics( { key: 'main_window_was_opened_by_shortcut', action: 'NavigationEvent' } )
+                    bl.get( 'StatisticsLogic' ).sendStatistics( { source: 'mainWindow_byShortcut', action: 'open' } )
                 }
             }
         } catch ( error ) {
@@ -81,7 +81,7 @@ if ( !gotTheLock ) {
         } else {
             bl.get( 'MainWindowStartLogic' ).createAndShowMainWindow()
             bl.get( 'CommonLogic' ).traceInfo( 'Main.js: --minimized-in-tray is not passed, create window' )
-            bl.get( 'StatisticsLogic' ).sendStatistics( { key: 'main_window_was_opened', action: 'NavigationEvent' } )
+            bl.get( 'StatisticsLogic' ).sendStatistics( { source: 'mainWindow', action: 'open' } )
         }
 
         if ( !Menu.getApplicationMenu() ) {
