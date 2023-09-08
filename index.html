@@ -1,23 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title id="app-title">Kaspersky Anti-Ransomware Tool</title>
-    <script id="marketo-script"></script>
 </head>
-
 <body>
     <div id="root"></div>
-    <script>
-        console.info( '%cKART: Working on GUI' + '%cP5.3.x',
-            'background-color: #2d8c70; color: white;',
-            'background-color: #ed4e49; color: white;' )
-    </script>
-    <script>
-        document.write("<script src='./shared.js?v=" + Date.now() + "'><\/script>")
-        document.write("<script src='./renderer.js?v=" + Date.now() + "'><\/script>")
-    </script>
+    <script src='./renderer.js'></script>
 </body>
-
 </html>
